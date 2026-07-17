@@ -26,9 +26,7 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  experimental: {
-    typedRoutes: true
-  },
+  typedRoutes: true,
   // pdf-parse pulls in pdfjs-dist, which assumes a plain Node `require` and breaks when webpack
   // tries to bundle it into the route handler (throws "Object.defineProperty called on
   // non-object" at import time — even for requests that never touch a PDF). Keep it external so

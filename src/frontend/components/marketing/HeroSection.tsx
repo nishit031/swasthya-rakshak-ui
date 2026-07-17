@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, FileText, Heart, ShieldCheck } from "lucide-react";
 import { useTranslation } from "@/frontend/components/providers/LanguageContext";
-import { Button } from "@/frontend/components/ui/Button";
+import { LinkButton } from "@/frontend/components/ui/LinkButton";
 import { HeartbeatHeart } from "@/frontend/components/ui/HeartbeatHeart";
 
 const AVATARS = [
@@ -71,17 +70,13 @@ export function HeroSection() {
             </motion.p>
 
             <motion.div className="mt-8 flex flex-wrap gap-4" variants={item}>
-              <Link href="/register">
-                <Button variant="primary" size="lg">
-                  {t("hero.ctaPrimary")}
-                  <ArrowRight size={18} />
-                </Button>
-              </Link>
-              <Link href="/login">
-                <Button variant="outline" size="lg">
-                  {t("hero.ctaSecondary")}
-                </Button>
-              </Link>
+              <LinkButton href="/register" variant="primary" size="lg">
+                {t("hero.ctaPrimary")}
+                <ArrowRight size={18} />
+              </LinkButton>
+              <LinkButton href="/login" variant="outline" size="lg">
+                {t("hero.ctaSecondary")}
+              </LinkButton>
             </motion.div>
 
             <motion.div className="mt-8 flex items-center gap-4" variants={item}>

@@ -4,7 +4,11 @@
 //
 // Must stay NEXT_PUBLIC_-prefixed: this module is imported by "use client" components, and only
 // NEXT_PUBLIC_ vars get inlined into the browser bundle — anything else reads as undefined there.
-export const API_BASE = (process.env.NEXT_PUBLIC_BACKEND_API_URL ?? "").replace(/\/$/, "");
+export const API_BASE = (
+  process.env.NEXT_PUBLIC_NEXT_PUBLIC_BACKEND_API_URL ??
+  process.env.NEXT_PUBLIC_BACKEND_API_URL ??
+  ""
+).replace(/\/$/, "");
 
 // Absolute URL for an API path like "/api/v1/auth/login".
 export function apiUrl(path: string): string {

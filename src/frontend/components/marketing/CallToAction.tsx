@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "@/frontend/components/providers/LanguageContext";
-import { Button } from "@/frontend/components/ui/Button";
+import { LinkButton } from "@/frontend/components/ui/LinkButton";
 
 export function CallToAction() {
   const { t } = useTranslation();
@@ -27,24 +26,22 @@ export function CallToAction() {
           </h2>
           <p className="relative mx-auto mt-4 max-w-xl text-primary-50">{t("cta.description")}</p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/register">
-              <Button
-                size="lg"
-                className="bg-white text-primary-700 shadow-md hover:bg-primary-50 hover:shadow-lg focus:ring-white"
-              >
-                {t("cta.primary")}
-                <ArrowRight size={18} />
-              </Button>
-            </Link>
-            <Link href="/login">
-              <Button
-                size="lg"
-                variant="ghost"
-                className="border border-white/60 text-white hover:bg-white/10"
-              >
-                {t("cta.secondary")}
-              </Button>
-            </Link>
+            <LinkButton
+              href="/register"
+              size="lg"
+              className="bg-white text-primary-700 shadow-md hover:bg-primary-50 hover:shadow-lg focus:ring-white"
+            >
+              {t("cta.primary")}
+              <ArrowRight size={18} />
+            </LinkButton>
+            <LinkButton
+              href="/login"
+              size="lg"
+              variant="ghost"
+              className="border border-white/60 text-white hover:bg-white/10"
+            >
+              {t("cta.secondary")}
+            </LinkButton>
           </div>
         </motion.div>
       </div>

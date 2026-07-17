@@ -7,7 +7,7 @@ import { Heart, Menu, X } from "lucide-react";
 import { useTranslation } from "@/frontend/components/providers/LanguageContext";
 import { ThemeToggle } from "@/frontend/components/ui/ThemeToggle";
 import { LanguageToggle } from "@/frontend/components/ui/LanguageToggle";
-import { Button } from "@/frontend/components/ui/Button";
+import { LinkButton } from "@/frontend/components/ui/LinkButton";
 
 /** Public marketing navbar with scroll shrink and a mobile menu. */
 export function Navbar() {
@@ -63,16 +63,12 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <LanguageToggle />
             <ThemeToggle />
-            <Link href="/login" className="hidden sm:inline-flex">
-              <Button variant="ghost" size="sm">
-                {t("nav.login")}
-              </Button>
-            </Link>
-            <Link href="/register" className="hidden sm:inline-flex">
-              <Button variant="primary" size="sm">
-                {t("nav.register")}
-              </Button>
-            </Link>
+            <LinkButton href="/login" variant="ghost" size="sm" className="hidden sm:inline-flex">
+              {t("nav.login")}
+            </LinkButton>
+            <LinkButton href="/register" variant="primary" size="sm" className="hidden sm:inline-flex">
+              {t("nav.register")}
+            </LinkButton>
             <button
               onClick={() => setMenuOpen((v) => !v)}
               aria-label="Toggle menu"
@@ -104,16 +100,12 @@ export function Navbar() {
                   </a>
                 ))}
                 <div className="flex gap-2 px-4 pt-2">
-                  <Link href="/login" className="flex-1">
-                    <Button variant="outline" size="sm" className="w-full">
-                      {t("nav.login")}
-                    </Button>
-                  </Link>
-                  <Link href="/register" className="flex-1">
-                    <Button variant="primary" size="sm" className="w-full">
-                      {t("nav.register")}
-                    </Button>
-                  </Link>
+                  <LinkButton href="/login" variant="outline" size="sm" className="flex-1">
+                    {t("nav.login")}
+                  </LinkButton>
+                  <LinkButton href="/register" variant="primary" size="sm" className="flex-1">
+                    {t("nav.register")}
+                  </LinkButton>
                 </div>
               </div>
             </motion.div>

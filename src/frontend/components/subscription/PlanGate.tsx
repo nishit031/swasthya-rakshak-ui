@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { Lock } from "lucide-react";
 import { useEntitlements } from "@/frontend/components/providers/EntitlementsContext";
 import { GlassCard } from "@/frontend/components/ui/GlassCard";
-import { Button } from "@/frontend/components/ui/Button";
+import { LinkButton } from "@/frontend/components/ui/LinkButton";
 import { useTranslation } from "@/frontend/components/providers/LanguageContext";
 
 interface PlanGateProps {
@@ -37,9 +36,9 @@ export function PlanGate({ feature, requiredPlanLabel, children }: PlanGateProps
           {formatMessage("subscription.gate.description", { plan: requiredPlanLabel })}
         </p>
       </div>
-      <Link href="/pricing">
-        <Button variant="primary">{t("subscription.gate.cta")}</Button>
-      </Link>
+      <LinkButton href="/pricing" variant="primary">
+        {t("subscription.gate.cta")}
+      </LinkButton>
     </GlassCard>
   );
 }

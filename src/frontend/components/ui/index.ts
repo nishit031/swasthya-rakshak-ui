@@ -1,5 +1,6 @@
 export { cn } from "./cn";
 export { Button } from "./Button";
+export { LinkButton } from "./LinkButton";
 export { GlassCard } from "./GlassCard";
 export { Badge, type BadgeTone } from "./Badge";
 export { StatCard } from "./StatCard";
