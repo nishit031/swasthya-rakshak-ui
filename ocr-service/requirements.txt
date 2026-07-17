@@ -22,7 +22,7 @@ opencv-python-headless==4.10.0.84
 # The GPU upgrade swaps these for the VLM stack (see README) — nothing above this line changes.
 numpy==1.26.4
 paddlepaddle==2.6.2
-paddleocr==2.7.3
+paddleocr==3.7.0
 # paddlepaddle 2.6.x's compiled protobuf bindings predate protobuf 5+'s upb backend; an
 # unpinned install resolves the newest protobuf and PaddleOCR segfaults on init (see README).
 protobuf<4
