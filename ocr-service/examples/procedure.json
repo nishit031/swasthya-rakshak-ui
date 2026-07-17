@@ -1,0 +1,147 @@
+{
+  "success": true,
+  "message": "Document processed.",
+  "data": {
+    "schema_version": "1.0",
+    "request_id": "req_example",
+    "job_id": "job_procedure",
+    "source": {
+      "filename": "procedure.txt",
+      "mime_type": "text/plain",
+      "size_bytes": 322,
+      "page_count": 1,
+      "sha256": "5d2ab280c10231a46d1183d05a63af9c50d4af659ab3e6cccd1618986659e4df"
+    },
+    "processing": {
+      "received_at": "2026-07-13T15:46:50Z",
+      "completed_at": "2026-07-13T15:46:50Z",
+      "duration_ms": 0,
+      "engine": "text",
+      "engine_version": "n/a",
+      "pipeline": ["validate", "decode", "classify", "route", "extract", "normalize"]
+    },
+    "classification": {
+      "structure_tier": "semi_structured",
+      "doc_group_hint": "procedure",
+      "is_medical_image": false,
+      "confidence": 0.6
+    },
+    "routing": {
+      "decision": "paddleocr",
+      "reason": "Printed/semi_structured document — PaddleOCR (CPU).",
+      "escalated": false
+    },
+    "document": {
+      "text": "Operative Note\n\nProcedure: Laparoscopic Appendectomy\nIndication: Acute appendicitis\nFindings: Inflamed appendix, no perforation\nTechnique: Three-port laparoscopic approach; appendix ligated and removed\nComplications: None\nSpecimens: Appendix sent for histopathology\nRecommendations: Clear fluids today, review in one week",
+      "pages": []
+    },
+    "fields": {
+      "kind": "procedure",
+      "items": [
+        {
+          "name": "Procedure",
+          "value": "Laparoscopic Appendectomy",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Indication",
+          "value": "Acute appendicitis",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Findings",
+          "value": "Inflamed appendix, no perforation",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Technique",
+          "value": "Three-port laparoscopic approach; appendix ligated and removed",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Complications",
+          "value": "None",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Specimens",
+          "value": "Appendix sent for histopathology",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Recommendations",
+          "value": "Clear fluids today, review in one week",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        }
+      ]
+    },
+    "confidence": {
+      "ocr_mean": 1.0,
+      "ocr_min": 1.0
+    },
+    "warnings": []
+  }
+}

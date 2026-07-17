@@ -1,0 +1,83 @@
+{
+  "success": true,
+  "message": "Document processed.",
+  "data": {
+    "schema_version": "1.0",
+    "request_id": "req_example",
+    "job_id": "job_prescription",
+    "source": {
+      "filename": "prescription.txt",
+      "mime_type": "text/plain",
+      "size_bytes": 187,
+      "page_count": 1,
+      "sha256": "7a5499f7860f7173fada5bb3337a285fa8dd649c9b9a75c04315869eeea28ea9"
+    },
+    "processing": {
+      "received_at": "2026-07-13T15:46:50Z",
+      "completed_at": "2026-07-13T15:46:50Z",
+      "duration_ms": 0,
+      "engine": "text",
+      "engine_version": "n/a",
+      "pipeline": ["validate", "decode", "classify", "route", "extract", "normalize"]
+    },
+    "classification": {
+      "structure_tier": "structured",
+      "doc_group_hint": "medication",
+      "is_medical_image": false,
+      "confidence": 0.8
+    },
+    "routing": {
+      "decision": "paddleocr",
+      "reason": "Printed/structured document — PaddleOCR (CPU).",
+      "escalated": false
+    },
+    "document": {
+      "text": "Dr. A. Sharma, MBBS MD\nRx\n\nTab Paracetamol 500 mg — twice daily after food, 5 days\nCap Amoxicillin 250 mg — thrice daily, 5 days\nAdvise: rest, plenty of fluids, review after one week",
+      "pages": []
+    },
+    "fields": {
+      "kind": "prescription",
+      "items": [
+        {
+          "name": "Paracetamol",
+          "value": "500 mg",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": {
+            "frequency": "twice daily",
+            "duration": "5 days"
+          },
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Amoxicillin",
+          "value": "250 mg",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": {
+            "frequency": "thrice daily",
+            "duration": "5 days"
+          },
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        }
+      ]
+    },
+    "confidence": {
+      "ocr_mean": 1.0,
+      "ocr_min": 1.0
+    },
+    "warnings": []
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "success": true,
+  "message": "Document processed.",
+  "data": {
+    "schema_version": "1.0",
+    "request_id": "req_example",
+    "job_id": "job_clinical",
+    "source": {
+      "filename": "clinical.txt",
+      "mime_type": "text/plain",
+      "size_bytes": 349,
+      "page_count": 1,
+      "sha256": "bd1058b2c73e831a01f50f432b84f1923945f4b6bc16aa662f6e4ed82d41f4dd"
+    },
+    "processing": {
+      "received_at": "2026-07-13T15:46:50Z",
+      "completed_at": "2026-07-13T15:46:50Z",
+      "duration_ms": 8,
+      "engine": "text",
+      "engine_version": "n/a",
+      "pipeline": ["validate", "decode", "classify", "route", "extract", "normalize"]
+    },
+    "classification": {
+      "structure_tier": "structured",
+      "doc_group_hint": "clinical",
+      "is_medical_image": false,
+      "confidence": 0.89
+    },
+    "routing": {
+      "decision": "paddleocr",
+      "reason": "Printed/structured document — PaddleOCR (CPU).",
+      "escalated": false
+    },
+    "document": {
+      "text": "City Clinic — Consultation Note\n\nChief Complaint: Fever and cough for 3 days\nHistory: Low-grade fever, productive cough, no breathlessness.\nOn Examination: Temp 100.4 F, throat congested, chest clear.\nAssessment: Acute bronchitis\nPlan: Azithromycin 500 mg once daily for 3 days, steam inhalation\nFollow-up: Review after 5 days if symptoms persist",
+      "pages": []
+    },
+    "fields": {
+      "kind": "clinical",
+      "items": [
+        {
+          "name": "Chief Complaint",
+          "value": "Fever and cough for 3 days",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "History",
+          "value": "Low-grade fever, productive cough, no breathlessness.",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Examination",
+          "value": "Temp 100.4 F, throat congested, chest clear.",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Assessment",
+          "value": "Acute bronchitis",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Plan",
+          "value": "Azithromycin 500 mg once daily for 3 days, steam inhalation",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Follow-up",
+          "value": "Review after 5 days if symptoms persist",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        }
+      ]
+    },
+    "confidence": {
+      "ocr_mean": 1.0,
+      "ocr_min": 1.0
+    },
+    "warnings": []
+  }
+}

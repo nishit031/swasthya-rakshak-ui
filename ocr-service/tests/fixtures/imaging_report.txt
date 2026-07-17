@@ -1,0 +1,7 @@
+Radiology Report — Chest X-Ray PA View
+
+Technique: PA erect chest radiograph
+Comparison: None
+Findings: Lungs clear. No focal consolidation. Cardiac silhouette normal.
+Impression: Normal chest radiograph
+Recommendation: No further imaging required

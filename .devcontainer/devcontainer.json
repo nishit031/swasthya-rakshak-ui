@@ -1,0 +1,46 @@
+{
+  "name": "Swasthya Rakshak — Frontend (Next.js)",
+
+  // Reuses the repo's own docker-compose.yml (Postgres, Presidio, OCR service) and layers on
+  // an "app" service for this dev container — see docker-compose.yml in this folder.
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspace",
+
+  // docker-compose.yml pins the Postgres volume to a pre-existing external volume by exact
+  // name; create it on the host before the containers start if it doesn't exist yet.
+  "initializeCommand": "docker volume inspect swasthya_rakshak_db_data >/dev/null 2>&1 || docker volume create swasthya_rakshak_db_data",
+
+  "forwardPorts": [3000, 5432, 5002, 8081],
+  "portsAttributes": {
+    "3000": { "label": "Next.js dev server", "onAutoForward": "openBrowser" },
+    "5432": { "label": "PostgreSQL (shared infra)" },
+    "5002": { "label": "Presidio Analyzer (shared infra)" },
+    "8081": { "label": "OCR service (shared infra)" }
+  },
+
+  "postCreateCommand": "npm install && ( [ -f .env ] || cp .env.example .env )",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "vitest.explorer",
+        "editorconfig.editorconfig",
+        "eamodio.gitlens",
+        "mikestead.dotenv",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "success": true,
+  "message": "Document processed.",
+  "data": {
+    "schema_version": "1.0",
+    "request_id": "req_example",
+    "job_id": "job_imaging_report",
+    "source": {
+      "filename": "imaging_report.txt",
+      "mime_type": "text/plain",
+      "size_bytes": 250,
+      "page_count": 1,
+      "sha256": "0bf2359852bbabbd24913f784b934ec9b2839cdae53ba2d98f2ee42c547661a1"
+    },
+    "processing": {
+      "received_at": "2026-07-13T15:46:50Z",
+      "completed_at": "2026-07-13T15:46:50Z",
+      "duration_ms": 6,
+      "engine": "text",
+      "engine_version": "n/a",
+      "pipeline": ["validate", "decode", "classify", "route", "extract", "normalize"]
+    },
+    "classification": {
+      "structure_tier": "semi_structured",
+      "doc_group_hint": "imaging",
+      "is_medical_image": false,
+      "confidence": 0.6
+    },
+    "routing": {
+      "decision": "paddleocr",
+      "reason": "Printed/semi_structured document — PaddleOCR (CPU).",
+      "escalated": false
+    },
+    "document": {
+      "text": "Radiology Report — Chest X-Ray PA View\n\nTechnique: PA erect chest radiograph\nComparison: None\nFindings: Lungs clear. No focal consolidation. Cardiac silhouette normal.\nImpression: Normal chest radiograph\nRecommendation: No further imaging required",
+      "pages": []
+    },
+    "fields": {
+      "kind": "imaging",
+      "items": [
+        {
+          "name": "Technique",
+          "value": "PA erect chest radiograph",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Comparison",
+          "value": "None",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Findings",
+          "value": "Lungs clear. No focal consolidation. Cardiac silhouette normal.",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Impression",
+          "value": "Normal chest radiograph",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Recommendation",
+          "value": "No further imaging required",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        }
+      ]
+    },
+    "confidence": {
+      "ocr_mean": 1.0,
+      "ocr_min": 1.0
+    },
+    "warnings": []
+  }
+}

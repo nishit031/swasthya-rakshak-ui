@@ -1,0 +1,32 @@
+# Runtime dependencies for the OCR service.
+# Split into "light core" (import at module load, needed for the API + pure logic + tests) and
+# "heavy engine" (imported lazily inside the OCR/preprocessing code paths only). Keeping the
+# heavy ones out of module top-level means the app boots and the unit tests run without a
+# 400MB Paddle install — you only pay for it when you actually OCR a scanned page.
+
+# --- light core ---
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+pydantic-settings==2.7.1
+python-multipart==0.0.20
+
+# --- PDF + image handling (lazy-imported) ---
+pypdfium2==4.30.0
+Pillow==10.4.0
+pillow-heif==0.21.0          # HEIC/HEIF decode (iPhone photos); registers a PIL opener
+opencv-python-headless==4.10.0.84
+
+# --- OCR engine (lazy-imported; the fragile pins — Paddle wheels are version-sensitive) ---
+# ponytail: these three move together. numpy<2 because paddleocr 2.7.x is not numpy-2 ready.
+# The GPU upgrade swaps these for the VLM stack (see README) — nothing above this line changes.
+numpy==1.26.4
+paddlepaddle==2.6.2
+paddleocr==2.7.3
+# paddlepaddle 2.6.x's compiled protobuf bindings predate protobuf 5+'s upb backend; an
+# unpinned install resolves the newest protobuf and PaddleOCR segfaults on init (see README).
+protobuf<4
+# paddle.utils unconditionally imports cpp_extension, which imports the Cython compiler package
+# even though we never JIT-compile a custom op. An unpinned install resolves Cython 3.x, which
+# segfaults deep inside Cython.Utils when paddle 2.6.x's era code touches it — pin the classic line.
+Cython<3

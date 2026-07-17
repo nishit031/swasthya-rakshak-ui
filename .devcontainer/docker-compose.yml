@@ -1,0 +1,17 @@
+version: "3.9"
+
+# Extends the repo's own ../docker-compose.yml (db, presidio-analyzer, ocr-service) instead of
+# duplicating it, and adds the "app" service the dev container itself runs in — so the exact
+# same shared infra described in RUNBOOK.md is available on the same network as the app.
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
+    depends_on:
+      - db
+      - presidio-analyzer
+      - ocr-service

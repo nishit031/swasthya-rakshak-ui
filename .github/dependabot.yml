@@ -1,0 +1,38 @@
+version: 2
+updates:
+  # Application dependencies (npm at the repo root).
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      # Batch low-risk updates into a single PR to keep review volume down.
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  # OCR microservice dependencies (pip).
+  - package-ecosystem: pip
+    directory: "/ocr-service"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  # Keep the GitHub Actions used in workflows up to date.
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      actions:
+        update-types:
+          - minor
+          - patch

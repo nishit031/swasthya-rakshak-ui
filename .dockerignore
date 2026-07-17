@@ -1,0 +1,9 @@
+node_modules
+.next
+.git
+.gitignore
+.env*
+README.md
+RUNBOOK.md
+coverage
+npm-debug.log*

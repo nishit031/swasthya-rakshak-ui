@@ -1,0 +1,111 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - dev-*
+      - stage
+  pull_request:
+    branches:
+      - main
+      - dev
+      - dev-*
+      - stage
+
+# Cancel superseded runs on the same ref (e.g. rapid pushes to a PR branch).
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Lint, format & types
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      # linting and tsc both need it present before they run.
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run typecheck
+
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run test
+
+  ocr-service:
+    name: OCR service (Python)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ocr-service
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # Light deps only — lint/types/pure-logic tests don't need the heavy Paddle/OpenCV stack
+      # (imported lazily). That stack is exercised in the Docker image build, not here.
+      - run: pip install ruff==0.8.6 mypy==1.14.1 pytest==8.3.4 pydantic==2.10.4 pydantic-settings==2.7.1
+      - run: ruff check .
+      - run: mypy app
+      - run: pytest
+
+  build:
+    name: Production build
+    runs-on: ubuntu-latest
+    # Only build on main/stage — dev and dev-* get fast feedback from quality+test
+    # only. A full `next build` is comparatively slow/expensive to run on every
+    # push to short-lived feature branches; it still gates the branches that
+    # actually ship.
+    if: |
+      (github.event_name == 'push' && contains(fromJSON('["main","stage"]'), github.ref_name)) ||
+      (github.event_name == 'pull_request' && contains(fromJSON('["main","stage"]'), github.base_ref))
+    # Placeholder secrets: `next build` instantiates code that reads these env
+    # vars, but no page hits a live database at build time, so dummy values are
+    # enough to prove the app compiles.
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/swasthya_rakshak
+      JWT_SECRET: ci_placeholder_jwt_secret
+      JWT_REFRESH_SECRET: ci_placeholder_jwt_refresh_secret
+      STORAGE_PROVIDER: local
+      SMS_PROVIDER: console
+      NEXT_PUBLIC_APP_NAME: Swasthya Rakshak
+      NEXT_PUBLIC_FRONTEND_API_URL: http://localhost:3000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+  audit:
+    name: Dependency audit (informational)
+    runs-on: ubuntu-latest
+    # Non-blocking: surfaces known vulnerabilities without failing the pipeline.
+    # Dependabot handles the actual upgrade PRs.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm audit --audit-level=high

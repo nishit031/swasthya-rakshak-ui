@@ -1,0 +1,7 @@
+# Dev/test tooling. The pure-logic tests (routing, extraction, schema, isolation) need only
+# these + the light core from requirements.txt — no Paddle/pypdfium2 required.
+-r requirements.txt
+pytest==8.3.4
+ruff==0.8.6
+mypy==1.14.1
+httpx==0.28.1

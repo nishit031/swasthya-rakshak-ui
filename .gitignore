@@ -1,0 +1,57 @@
+# dependencies
+node_modules
+.continue
+
+# build
+.next
+out
+dist
+build
+
+# env
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+
+# prisma
+prisma/migrations/*
+!prisma/migrations/20260715090000_add_user_gender/
+!prisma/migrations/20260715090000_add_user_gender/migration.sql
+
+# coverage
+coverage
+
+# editor
+.vscode
+.idea
+
+# typescript
+tsconfig.tsbuildinfo
+
+# temp
+*.tmp
+*.temp
+
+# Remove the improvement prompt docs
+improvement-docs/*
+
+# local uploads (dev storage) — never commit real or test-fixture health data
+/public/uploads/*
+
+# captured AI request payloads from scripts/mock-llm-server.js (may contain PII test fixtures)
+scripts/last-llm-request.json
+# python tool caches (ocr-service local mypy/pytest runs)
+__pycache__/
+.mypy_cache/
+.pytest_cache/

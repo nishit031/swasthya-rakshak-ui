@@ -1,0 +1,4 @@
+# Default owners for everything in the repo. Requests review on every PR.
+# NOTE: all owners must be on ONE line — with multiple matching lines only the
+# last one wins, so listing them separately would request just the last owner.
+* @PreetChauhan111 @nishit031 @sohaliya26

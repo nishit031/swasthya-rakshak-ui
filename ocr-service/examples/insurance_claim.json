@@ -1,0 +1,203 @@
+{
+  "success": true,
+  "message": "Document processed.",
+  "data": {
+    "schema_version": "1.0",
+    "request_id": "req_example",
+    "job_id": "job_insurance_claim",
+    "source": {
+      "filename": "insurance_claim.txt",
+      "mime_type": "text/plain",
+      "size_bytes": 233,
+      "page_count": 1,
+      "sha256": "cedb10271a1b7b5447345e8284f0b84b8cd728b380c1bf1bc079b04d1c8eea39"
+    },
+    "processing": {
+      "received_at": "2026-07-13T15:46:50Z",
+      "completed_at": "2026-07-13T15:46:50Z",
+      "duration_ms": 1,
+      "engine": "text",
+      "engine_version": "n/a",
+      "pipeline": ["validate", "decode", "classify", "route", "extract", "normalize"]
+    },
+    "classification": {
+      "structure_tier": "structured",
+      "doc_group_hint": "administrative",
+      "is_medical_image": false,
+      "confidence": 0.95
+    },
+    "routing": {
+      "decision": "paddleocr",
+      "reason": "Printed/structured document — PaddleOCR (CPU).",
+      "escalated": false
+    },
+    "document": {
+      "text": "STAR HEALTH INSURANCE — CLAIM FORM\n\nClaim Number: CLM-2024-88213\nPolicy Number: POL/99/77123\nInsurer: Star Health and Allied Insurance\nDate: 12/05/2024\n\nConsultation Fee 500.00\nRoom Charges Rs 1,200.50\nTotal Amount Payable 3890.50",
+      "pages": []
+    },
+    "fields": {
+      "kind": "billing",
+      "items": [
+        {
+          "name": "Claim Number: CLM-2024",
+          "value": "88213",
+          "unit": "INR",
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Policy Number: POL/99/",
+          "value": "77123",
+          "unit": "INR",
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Date: 12/05/",
+          "value": "2024",
+          "unit": "INR",
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Consultation Fee",
+          "value": "500.00",
+          "unit": "INR",
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Room Charges",
+          "value": "1200.50",
+          "unit": "INR",
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Total Amount Payable",
+          "value": "3890.50",
+          "unit": "INR",
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Claim Number",
+          "value": "CLM-2024-88213",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Policy Number",
+          "value": "POL/99/77123",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Payer",
+          "value": "Star Health and Allied Insurance",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Date",
+          "value": "12/05/2024",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Amount",
+          "value": "3890.50",
+          "unit": null,
+          "reference_range": null,
+          "flag": null,
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        }
+      ]
+    },
+    "confidence": {
+      "ocr_mean": 1.0,
+      "ocr_min": 1.0
+    },
+    "warnings": []
+  }
+}

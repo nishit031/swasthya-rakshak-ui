@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: swasthya_rakshak_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: swasthya_rakshak
+    ports:
+      - "5432:5432"
+    volumes:
+      - swasthya_rakshak_db_data:/var/lib/postgresql/data
+
+  # PII/PHI name & address NER for the redaction gateway. Regex handles structured IDs in-app;
+  # this catches free-text names/locations. Required for AI summary/extract — set PRESIDIO_URL
+  # (the gateway fails closed if it's unreachable, so names can never slip through un-redacted).
+  presidio-analyzer:
+    image: mcr.microsoft.com/presidio-analyzer:latest
+    container_name: swasthya_rakshak_presidio
+    restart: unless-stopped
+    ports:
+      - "5002:3000"
+
+  # Routed OCR / document-understanding service (PaddleOCR, CPU). extract-text.ts POSTs PDF/image
+  # uploads here when OCR_SERVICE_URL is set, and falls back to in-process tesseract.js if it's
+  # down. The image bakes in the OCR models so the container needs no network at runtime.
+  ocr-service:
+    build: ./ocr-service
+    container_name: swasthya_rakshak_ocr
+    restart: unless-stopped
+    ports:
+      - "8081:8000"
+
+volumes:
+  # Pinned to the actual pre-existing volume by exact name (external: true) so a
+  # COMPOSE_PROJECT_NAME or working-directory change can never make compose spin up a second,
+  # empty volume alongside the real one again.
+  swasthya_rakshak_db_data:
+    external: true
+    name: swasthya_rakshak_db_data

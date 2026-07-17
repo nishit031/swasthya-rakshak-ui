@@ -1,0 +1,119 @@
+{
+  "success": true,
+  "message": "Document processed.",
+  "data": {
+    "schema_version": "1.0",
+    "request_id": "req_example",
+    "job_id": "job_lab_report",
+    "source": {
+      "filename": "lab_report.txt",
+      "mime_type": "text/plain",
+      "size_bytes": 248,
+      "page_count": 1,
+      "sha256": "b76d431e07d99c07d831c5a4f3cf7f6bc340ed4e4123380b3de087a9384a7b17"
+    },
+    "processing": {
+      "received_at": "2026-07-13T15:46:50Z",
+      "completed_at": "2026-07-13T15:46:50Z",
+      "duration_ms": 2,
+      "engine": "text",
+      "engine_version": "n/a",
+      "pipeline": ["validate", "decode", "classify", "route", "extract", "normalize"]
+    },
+    "classification": {
+      "structure_tier": "structured",
+      "doc_group_hint": "other",
+      "is_medical_image": false,
+      "confidence": 0.95
+    },
+    "routing": {
+      "decision": "paddleocr",
+      "reason": "Printed/structured document — PaddleOCR (CPU).",
+      "escalated": false
+    },
+    "document": {
+      "text": "SUNRISE DIAGNOSTICS\nComplete Blood Count (CBC)\n\nHaemoglobin 13.5 g/dL 13.0-17.0\nTotal WBC Count 7500 /cumm 4000-11000\nPlatelet Count 250000 /cumm 150000-410000\nRBC Count 5.2 mill/cumm 4.5-5.5\nGlucose Fasting 95 mg/dL 70-110\n\nReport Date 12-05-2024",
+      "pages": []
+    },
+    "fields": {
+      "kind": "lab",
+      "items": [
+        {
+          "name": "Haemoglobin",
+          "value": "13.5",
+          "unit": "g/dL",
+          "reference_range": "13.0-17.0",
+          "flag": "normal",
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Total WBC Count",
+          "value": "7500",
+          "unit": "/cumm",
+          "reference_range": "4000-11000",
+          "flag": "normal",
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Platelet Count",
+          "value": "250000",
+          "unit": "/cumm",
+          "reference_range": "150000-410000",
+          "flag": "normal",
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "RBC Count",
+          "value": "5.2",
+          "unit": "mill/cumm",
+          "reference_range": "4.5-5.5",
+          "flag": "normal",
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        },
+        {
+          "name": "Glucose Fasting",
+          "value": "95",
+          "unit": "mg/dL",
+          "reference_range": "70-110",
+          "flag": "normal",
+          "attributes": null,
+          "low_confidence": false,
+          "confidence": 1.0,
+          "provenance": {
+            "page": 1,
+            "bbox": [0.0, 0.0, 0.0, 0.0]
+          }
+        }
+      ]
+    },
+    "confidence": {
+      "ocr_mean": 1.0,
+      "ocr_min": 1.0
+    },
+    "warnings": []
+  }
+}
