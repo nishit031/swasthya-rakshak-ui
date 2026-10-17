@@ -29,4 +29,4 @@ protobuf<4
 # paddle.utils unconditionally imports cpp_extension, which imports the Cython compiler package
 # even though we never JIT-compile a custom op. An unpinned install resolves Cython 3.x, which
 # segfaults deep inside Cython.Utils when paddle 2.6.x's era code touches it — pin the classic line.
-Cython<3
+Cython<4
